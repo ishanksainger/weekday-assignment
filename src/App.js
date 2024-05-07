@@ -3,11 +3,14 @@ import "./App.css";
 import { setJobs, setLoading } from "./slices/jobSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Cards from "./components/Cards";
+import SearchBar from "./components/SearchBar";
+import { Avatar, Box, Typography } from "@mui/material";
 
 function App() {
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();
-  const {loading } = useSelector((state) => state.jobs);
+  const { jobs, loading } = useSelector((state) => state.jobs);
+  const [searchCriteria, setSearchCriteria] = useState({});
 
   // Fetch jobs data when page or loading state changes
   useEffect(() => {
@@ -79,19 +82,107 @@ function App() {
     };
   }, [loading]);
 
+  // Update search criteria
+  const handleSearchInputChange = (field, value) => {
+    setSearchCriteria({ ...searchCriteria, [field]: value });
+  };
 
+  // Filter jobs based on search criteria
+  const filteredJobs = useSelector((state) => {
+    const { jobs } = state.jobs;
+    if (Object.keys(searchCriteria).length === 0) {
+      return jobs; // Return all jobs if search criteria are empty
+    }
+    return jobs.filter((job) => {
+      // Check if each field matches the search criteria
+
+      const jobRoleMatches =
+        !searchCriteria.jobRole ||
+        searchCriteria.jobRole.length === 0 ||
+        searchCriteria.jobRole.some((role) =>
+          job.jobRole.toLowerCase().includes(role.toLowerCase())
+        );
+
+      const companyNameMatch =
+        !searchCriteria.companyName ||
+        job.companyName
+          .toLowerCase()
+          .includes(searchCriteria.companyName.toLowerCase());
+      const locationMatch =
+        !searchCriteria.location ||
+        job.location
+          .toLowerCase()
+          .includes(searchCriteria.location.toLowerCase());
+
+      const minExpMatch =
+        !searchCriteria.minExp ||
+        searchCriteria.minExp.length === 0 ||
+        searchCriteria.minExp.some(
+          (minExp) => job.minExp >= minExp // Compare numerical values directly
+        );
+      const minJdSalaryMatch =
+        !searchCriteria.minJdSalary ||
+        searchCriteria.minJdSalary.length === 0 ||
+        searchCriteria.minJdSalary.some((minJdSalary) => {
+          // Convert minJdSalary string to number and remove "L" suffix
+          const minJdSalaryNumber = parseInt(minJdSalary.replace("L", ""), 10);
+          // Check if job.minJdSalary is defined and is greater than or equal to minJdSalaryNumber
+          return job.minJdSalary && job.minJdSalary >= minJdSalaryNumber;
+        });
+      const totalEmployeesMatch =
+        !searchCriteria.totalEmployees ||
+        searchCriteria.totalEmployees.length === 0 ||
+        searchCriteria.totalEmployees.some(
+          (totalEmployees) =>
+            job.totalEmployees &&
+            job.totalEmployees
+              .toString()
+              .toLowerCase()
+              .includes(totalEmployees.toLowerCase())
+        );
+      const techStackMatch =
+        !searchCriteria.techStack ||
+        searchCriteria.techStack.length === 0 ||
+        searchCriteria.techStack.some(
+          (tech) =>
+            job.techStack &&
+            job.techStack.toLowerCase().includes(tech.toLowerCase())
+        );
+      const remoteMatch =
+        !searchCriteria.remote ||
+        searchCriteria.remote.length === 0 ||
+        searchCriteria.remote.some(
+          (remote) =>
+            job.remote &&
+            job.remote.toLowerCase().includes(remote.toLowerCase())
+        );
+
+      return (
+        jobRoleMatches &&
+        companyNameMatch &&
+        locationMatch &&
+        minExpMatch &&
+        minJdSalaryMatch &&
+        totalEmployeesMatch &&
+        techStackMatch &&
+        remoteMatch
+      );
+    });
+  });
 
   return (
     <div className="mainContainer">
+      <SearchBar onSearchInputChange={handleSearchInputChange} />
       <div className="innerContainer">
         {/* Show loader if data is loading */}
-        {loading ? (
-          <div className="custom-loader-outer">
-            <div className="custom-loader-inner"></div>
-          </div>
-        ) : 
-          
-          <Cards/> // Show job cards
+        {
+          loading ? (
+            <div className="custom-loader-outer">
+              <div className="custom-loader-inner"></div>
+            </div>
+          ) : (
+            <Cards jobs={filteredJobs} />
+          ) // Show job cards
         }
       </div>
     </div>

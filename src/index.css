@@ -9,3 +9,177 @@
     scroll-behavior: smooth;
     scroll-margin-top: 90px;
   }
+  /* Grid Card css */
+  .grid-outer-card {
+    padding-top: 24px !important;
+    padding-left: 24px !important;
+    margin-top: 8px !important;
+  }
+  .grid-inner-card {
+    max-width: 360px;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+  }
+  .grid-inner-card:hover {
+    transition: all 0.2s ease-in-out;
+    transform: scale(1.01);
+  }
+  /* Card Content css */
+  .card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center;
+    height: 100% !important;
+    position: relative !important;
+    border-radius: 20px !important;
+    padding: 5px !important;
+  }
+  .card-content {
+    width: 100%;
+    flex: 1 1 0%;
+    padding: 16px;
+  }
+  .card-title {
+    display: flex !important;
+    gap: 0.5rem !important;
+  }
+  .card-image {
+    width: 25px !important;
+    height: 2.5rem !important;
+  }
+  .card-jobRole {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 3px !important;
+    color: #8b8b8b !important;
+    text-transform: capitalize !important;
+  }
+  .card-comp-name {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-transform: capitalize !important;
+    color: black !important;
+  }
+  .card-job-loc {
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    margin-top: 5px !important;
+    text-transform: capitalize !important;
+    color: black !important;
+  }
+  .card-salary {
+    font-size: 14px !important;
+    font-weight: 500;
+    margin: 8px 0 !important;
+    color: rgb(77, 89, 106);
+  }
+  .card-job-desc {
+    height: 250px;
+    overflow: hidden;
+    mask-image: linear-gradient(
+      rgb(255, 255, 255),
+      rgb(255, 255, 255),
+      rgba(255, 255, 255, 0)
+    );
+  }
+  .card-job-about {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+  }
+  .card-job-content {
+    white-space: pre-wrap;
+    font-size: 14px;
+  }
+  .card-view-more {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    position: relative;
+    top: -20px;
+  }
+  .card-view-more > a {
+    color: #4943da;
+    cursor: pointer !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+  }
+  .card-job-exp {
+    margin-top: 10px;
+  }
+  .card-job-exp > h3 {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 3px !important;
+    color: #8b8b8b !important;
+  }
+  .card-job-exp > h2 {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  .card-job-btn {
+    flex-grow: 1 !important;
+    width: 100% !important;
+    padding: 0 15px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-end !important;
+    align-items: flex-start !important;
+    margin-top: 2rem;
+  }
+  .card-job-btn-inner {
+    -webkit-box-pack: justify !important;
+    justify-content: space-between !important;
+    display: flex !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+  .custom-btn {
+    width: 100% !important;
+    background-color: rgb(85, 239, 196) !important;
+    color: rgb(0, 0, 0) !important;
+    font-weight: 500 !important;
+    padding: 8px 18px !important;
+    text-transform: none !important;
+    border-radius: 8px !important;
+    margin: 5px 0 !important;
+  }
+  /* Search Css */
+  .search-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    padding: 0 20px 20px;
+    background-color: #fff !important;
+    margin-top: 2rem !important;
+    margin-left: 0rem !important;
+    width: 100% !important;
+  }
+  .input-box {
+    margin: 2px 5px 2px 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .css-1jqq78o-placeholder {
+    font-size: 12px !important;
+    color: rgb(128, 128, 128) !important;
+  }
+  .css-13cymwt-control {
+    min-width: 150px !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgb(204, 204, 204) !important;
+  }
+  .MuiInputBase-formControl {
+    height: 40px !important;
+    background-color: rgb(255, 255, 255);
+  }
