@@ -183,3 +183,18 @@
     height: 40px !important;
     background-color: rgb(255, 255, 255);
   }
+  /* Error 404 CSS */
+  .job-error {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 40px;
+  }
+  .job-error-p {
+    margin: 20px 0px 0px !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    font-weight: 700 !important;
+  }
+  

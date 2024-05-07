@@ -175,15 +175,24 @@ function App() {
       <SearchBar onSearchInputChange={handleSearchInputChange} />
       <div className="innerContainer">
         {/* Show loader if data is loading */}
-        {
-          loading ? (
-            <div className="custom-loader-outer">
-              <div className="custom-loader-inner"></div>
-            </div>
-          ) : (
-            <Cards jobs={filteredJobs} />
-          ) // Show job cards
-        }
+        {loading ? (
+          <div className="custom-loader-outer">
+            <div className="custom-loader-inner"></div>
+          </div>
+        ) : filteredJobs.length === 0 ? ( // Show message if no jobs found
+          <Box className="job-error">
+            <Avatar
+              alt="Not Found"
+              src="/notFound.png"
+              style={{ width: "150px", height: "150px" }}
+            />
+            <Typography component="p" className="job-error-p">
+              No Jobs available for this category at the moment
+            </Typography>
+          </Box>
+        ) : (
+          <Cards jobs={filteredJobs} /> // Show job cards
+        )}
       </div>
     </div>
   );

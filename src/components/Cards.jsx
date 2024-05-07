@@ -3,9 +3,7 @@ import CardBox from "./CardBox";
 import Grid from "@mui/material/Grid";
 
 // Component to render job cards
-const Cards = () => {
-  const {jobs } = useSelector((state) => state.jobs);
-
+const Cards = ({ jobs }) => {
   return (
     // Render a grid container with spacing
     <Grid container spacing={2}>
