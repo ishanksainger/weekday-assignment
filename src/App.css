@@ -1,0 +1,29 @@
+/* App.js CSS for containers */
+.mainContainer {
+    width: 100%;
+  }
+  .innerContainer {
+    width: 98%;
+    margin: 0 auto;
+  }
+  /* Loader CSS */
+  .custom-loader-outer {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+  .custom-loader-inner {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(#0000 10%, #766df4);
+    -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+    animation: s3 1s infinite linear;
+  }
+  @keyframes s3 {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  
